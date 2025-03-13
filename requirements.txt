@@ -9,6 +9,7 @@ python-dotenv>=1.0.0
 robotexclusionrulesparser
 colorama
 langchain
+langchain-openai
 langchain_community
 chromadb
 sentence_transformers

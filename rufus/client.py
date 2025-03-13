@@ -287,48 +287,6 @@ class RufusClient:
             return {"status": "unhealthy", "error": str(e)}
 
 
-# # Example usage
-# if __name__ == "__main__":
-#     # Create client with ollama model (default)
-#     client_ollama = RufusClient()
-
-#     # Or create client with OpenAI
-#     # client_openai = RufusClient(model="openai")
-
-#     try:
-#         # Check API health
-#         health = client_ollama.get_health()
-#         if health.get("status") != "healthy":
-#             print(f"Warning: API service appears to be unhealthy: {health.get('error', 'Unknown error')}")
-#             print("Continuing anyway...")
-
-#         # Scrape a website
-#         print("Scraping website...")
-#         result = client_ollama.scrape(
-#             url="https://www.python.org",
-#             instructions="Extract information about Python features and documentation",
-#             max_depth=1,
-#             max_pages=5
-#         )
-
-#         print(f"Scraping completed: {result}")
-
-#         # Query the collection
-#         if "collection_name" in result:
-#             print("\nQuerying collection...")
-#             answer = client_ollama.query(
-#                 collection_name=result["collection_name"],
-#                 query="What are the main features of Python?"
-#             )
-
-#             print(f"Answer: {answer.get('answer')}")
-#             print("\nSources:")
-#             for url in answer.get("source_urls", []):
-#                 print(f"- {url}")
-
-#     except Exception as e:
-#         print(f"Error: {str(e)}")
-
 # At the end of client.py
 if __name__ == "__main__":
     # Ask user if they want to run the example
@@ -338,7 +296,7 @@ if __name__ == "__main__":
 
     if run_example == "y":
         # Create a client with ollama model (default)
-        client_ollama = RufusClient()
+        client_ollama = RufusClient(model="openai")
 
         try:
             # Optional: Prompt user for URL
@@ -346,6 +304,8 @@ if __name__ == "__main__":
                 input("Enter URL to scrape (default: https://www.python.org): ")
                 or "https://www.python.org"
             )
+            if not url.startswith("http") or not url.startswith("https"):
+                url = "https://" + url
             instructions = (
                 input(
                     "Enter instructions for scraping (default: Extract information about Python programming language and documentation): "

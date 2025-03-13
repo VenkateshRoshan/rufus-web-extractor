@@ -2,7 +2,7 @@
 
 # Model Configuration
 model:
-  name: ollama  # Default model (ollama or openai)
+  name: openai  # Default model (ollama or openai)
   supported_models: 
     - ollama
     - openai
@@ -53,15 +53,19 @@ output:
 api:
   host: 0.0.0.0
   port: 8234
+  url: http://localhost:8234
   cors_origins:
     - http://localhost:3000
-    - http://127.0.0.1:3000
+    - http://127.0.0.1:3000    
 
 # Gradio UI Configuration
 gradio:
   host: 0.0.0.0
   port: 7860
   share: false
+  models:
+    - ollama
+    - openai
 
 # Optional: Custom Instructions Template
 instructions_template: >

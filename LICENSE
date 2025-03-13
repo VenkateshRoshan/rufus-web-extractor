@@ -19,3 +19,35 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+#### 3. Initialize the client module (`rufus/client.py`):
+
+```python
+class RufusClient:
+    """
+    Client for the Rufus web scraping tool.
+    """
+    
+    def __init__(self, api_key=None):
+        """
+        Initialize the Rufus client.
+        
+        Args:
+            api_key (str, optional): API key for authentication.
+        """
+        self.api_key = api_key
+        # This will be expanded later
+        
+    def scrape(self, url, instructions=None):
+        """
+        Scrape a website based on instructions.
+        
+        Args:
+            url (str): The URL to scrape.
+            instructions (str, optional): Natural language instructions for scraping.
+            
+        Returns:
+            list: A list of extracted documents.
+        """
+        # This will be implemented later
+        pass

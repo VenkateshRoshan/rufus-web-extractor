@@ -65,8 +65,13 @@ class ScrapeRequest(BaseModel):
     collection_name: Optional[str] = Field(
         None, description="Custom name for vector store collection"
     )
-    model: Optional[str] = Field(
-        "ollama", description="LLM model to use (ollama or openai)"
+    # model: Optional[str] = Field(
+    #     "ollama", description="LLM model to use (ollama or openai)"
+    # )
+    model: Optional[Literal["ollama", "openai"]] = Field(
+        config.get("model.name", "ollama"),
+        description="LLM model to use (ollama or openai)",
+        examples=["ollama", "openai"],
     )
 
 
@@ -76,8 +81,13 @@ class QueryRequest(BaseModel):
     custom_prompt: Optional[str] = Field(
         None, description="Custom prompt template for the LLM"
     )
-    model: Optional[str] = Field(
-        "ollama", description="LLM model to use (ollama or openai)"
+    # model: Optional[str] = Field(
+    #     "ollama", description="LLM model to use (ollama or openai)"
+    # )
+    model: Optional[Literal["ollama", "openai"]] = Field(
+        config.get("model.name", "ollama"),
+        description="LLM model to use (ollama or openai)",
+        examples=["ollama", "openai"],
     )
 
 
