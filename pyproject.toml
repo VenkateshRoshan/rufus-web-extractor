@@ -23,23 +23,24 @@ classifiers = [
     "Topic :: Text Processing :: General",
 ]
 
-[project.dependencies]
-requests = ">=2.31.0"
-beautifulsoup4 = ">=4.12.2"
-openai = ">=1.3.0"
-selenium = ">=4.15.0"
-webdriver-manager = ">=4.0.0"
-python-dotenv = ">=1.0.0"
-robotexclusionrulesparser = "*"
-colorama = "*"
-langchain = "*"
-langchain-openai = "*"
-langchain_community = "*"
-chromadb = "*"
-sentence_transformers = "*"
-dotenv = "*"
-pyyaml = "*"
-ollama = "*"
+dependencies = [
+    "requests>=2.31.0",
+    "beautifulsoup4>=4.12.2",
+    "openai>=1.3.0",
+    "selenium>=4.15.0",
+    "webdriver-manager>=4.0.0",
+    "python-dotenv>=1.0.0",
+    "robotexclusionrulesparser",
+    "colorama",
+    "langchain",
+    "langchain-openai",
+    "langchain_community",
+    "chromadb",
+    "sentence_transformers",
+    "python-dotenv",
+    "pyyaml",
+    "ollama",
+]
 
 [project.optional-dependencies]
 dev = [
