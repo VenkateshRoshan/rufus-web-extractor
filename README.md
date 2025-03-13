@@ -79,6 +79,12 @@ Edit `rufus/config/config.yaml` to customize:
 
 ## 🏃 Running the Application
 
+### FastAPI Backend
+
+```bash
+uvicorn rufus.api:app --host 0.0.0.0 --port 8234
+```
+
 ### Gradio Web Interface
 
 ```bash
@@ -89,10 +95,12 @@ python gradio_app.py
 rufus-gradio
 ```
 
-### FastAPI Backend
-
+### Rufus Client
 ```bash
-uvicorn rufus.api:app --host 0.0.0.0 --port 8234
+from rufus.client import RufusClient
+client = RufusClient(model="openai")
+result = client.scrape(url=url,
+...     instructions=query)
 ```
 
 ## 🐳 Docker Deployment , haven't tested yet
@@ -164,10 +172,33 @@ pip install -e .[ollama]
 ```bash
 
 # create .env file
+touch .env
+
+# inside of the .env file
+OPENAI_API_KEY=API_KEY
 
 # Install OpenAI dependencies
 pip install -e .[openai]
 ```
+
+# Outputs
+
+## API output
+![alt text](Images/client.png)
+
+```
+The Job completed files will stored in output/rufus_results_rufus_www.withchima.com_20250313_084453.json
+
+The full meta content, headers files will be saved in 
+tmp/relevant_pages_20250313_084453.json
+```
+
+![alt text](Images/client_output.png)
+
+## Gradio Interface output
+![alt text](Images/image_cmd_run.png)
+![alt text](Images/image_gradio_test.png)
+![alt text](Images/chima_news.png)
 
 ## 🛡️ Security
 
