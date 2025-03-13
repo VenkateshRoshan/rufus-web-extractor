@@ -181,6 +181,9 @@ OPENAI_API_KEY=API_KEY
 pip install -e .[openai]
 ```
 
+# Arcchitecture
+![alt text](Images/architecture.png)
+
 # Outputs
 
 ## API output
