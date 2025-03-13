@@ -378,6 +378,41 @@ def delete_collection(collection_name: str):
         )
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.get("/collections/{collection_name}/documents")
+async def get_collection_documents(collection_name: str):
+    """
+    Retrieve documents from a collection.
+    
+    Args:
+        collection_name: Name of the collection
+    
+    Returns:
+        Dictionary with documents list
+    """
+    try:
+        # Initialize RAG handler
+        rag_handler = RAGHandler()
+        
+        # Run a query with the collection name as the query
+        # to get a general summary of the collection content
+        response = rag_handler.generate_answer(
+            query=f"Summarize the key information about {collection_name}",
+            qa_chain=rag_handler.setup_retrieval_qa(collection_name=collection_name)
+        )
+        
+        # Create a document with the summary
+        documents = [{
+            "content": response.get("answer", "No content available"),
+            "metadata": {
+                "source_urls": response.get("source_urls", []),
+                "collection_name": collection_name
+            }
+        }]
+        
+        return {"documents": documents}
+    except Exception as e:
+        logger.error(f"Error retrieving documents: {str(e)}")
+        raise HTTPException(status_code=500, detail=str(e))
 
 @app.get("/health")
 def health_check():
