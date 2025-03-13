@@ -32,9 +32,9 @@ vector_store:
 
 # Retrieval-Augmented Generation (RAG) Settings
 rag:
-  top_k_documents: 5  # Number of top documents to retrieve
-  chunk_size: 1000    # Text chunk size for embedding
-  chunk_overlap: 200  # Overlap between text chunks
+  top_k_documents: 10  # Number of top documents to retrieve
+  chunk_size: 3000    # Text chunk size for embedding
+  chunk_overlap: 500  # Overlap between text chunks
 
 # Logging Configuration
 logging:

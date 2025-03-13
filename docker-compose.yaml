@@ -1,0 +1,35 @@
+version: '3.10'
+
+services:
+  rufus-web-extractor:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    image: rufus-web-extractor
+    container_name: rufus-web-extractor
+    ports:
+      - "7860:7860"  # Gradio UI
+      - "8234:8234"  # FastAPI endpoint
+    volumes:
+      - .:/app
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./vectorstore:/app/vectorstore
+    environment:
+      - PYTHONUNBUFFERED=1
+      - RUFUS_API_KEY=${RUFUS_API_KEY} # currently working with OPEN_AI_API_KEY
+    restart: unless-stopped
+    
+  # Optional: Add Ollama service if using local LLM
+  ollama:
+    image: ollama/ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ./ollama_data:/root/.ollama
+    restart: unless-stopped
+
+volumes:
+  rufus_data:
+  vectorstore:
+  logs:
