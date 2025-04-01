@@ -130,7 +130,7 @@ class RufusExtractor:
 
             print(f"=" * 10, f"Step 2: Extracting content completed...", f"=" * 10)
 
-            print(f"=" * 10, f"Step 3: Creating vector store...", f"=" * 10)
+            print(f"=" * 10, f"Step 3: Preparing vector store...", f"=" * 10)
             # 4. Prepare documents for vector store
             documents = []
             for page_url, content in relevant_pages.items():
@@ -160,7 +160,7 @@ class RufusExtractor:
                     },
                 }
                 documents.append(doc)
-            print(f"=" * 10, f"Step 3: Creating vector store completed...", f"=" * 10)
+            print(f"=" * 10, f"Step 3: Preparing vector store completed...", f"=" * 10)
 
             print(f"=" * 10, f"Step 4: Creating vector store...", f"=" * 10)
             # 5. Create vector store
@@ -200,6 +200,7 @@ class RufusExtractor:
                     "relevant_urls": list(relevant_pages.keys()),
                     "all_visited_urls": crawl_results["all_visited_urls"],
                 },
+                # "qa_chain": qa_chain,
             }
 
             # Save results to file

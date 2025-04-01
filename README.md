@@ -186,22 +186,8 @@ pip install -e .[openai]
 
 # Outputs
 
-## API output
-![alt text](Images/client.png)
-
-```
-The Job completed files will stored in output/rufus_results_rufus_www.withchima.com_20250313_084453.json
-
-The full meta content, headers files will be saved in 
-tmp/relevant_pages_20250313_084453.json
-```
-
-![alt text](Images/client_output.png)
-
-## Gradio Interface output
-![alt text](Images/image_cmd_run.png)
-![alt text](Images/image_gradio_test.png)
-![alt text](Images/chima_news.png)
+## Gradio Interface
+![alt text](Images/interface.png)
 
 ## 🛡️ Security
 
